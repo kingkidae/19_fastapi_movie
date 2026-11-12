@@ -1,4 +1,4 @@
-# reel
+# MOtiVIEte
 
 TMDB 데이터로 영화·시리즈를 둘러보는 웹 앱. 백엔드는 FastAPI, 프론트는 React(Vite).
 
