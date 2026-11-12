@@ -83,8 +83,7 @@ export default function Hero({ items, genres, onOpen }) {
               role="tab"
               aria-selected={i === index}
               aria-label={it.title}
-              className={`${i === index ? 'is-active' : ''}${paused ? ' is-paused' : ''}`}
-              style={{ '--d': `${DURATION}ms` }}
+              className={i === index ? 'is-active' : ''}
               onClick={() => setIndex(i)}
             >
               <i />

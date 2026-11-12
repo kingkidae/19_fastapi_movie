@@ -242,16 +242,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: roun
 .hero-dots button { width: 34px; height: 24px; display: grid; align-items: center; }
 .hero-dots i { display: block; height: 3px; border-radius: 2px; background: rgb(255 255 255 / 0.22); overflow: hidden; transition: background-color 0.3s; }
 .hero-dots button:hover i { background: rgb(255 255 255 / 0.45); }
-.hero-dots .is-active i::before {
-  content: '';
-  display: block;
-  height: 100%;
-  background: var(--lime);
-  transform-origin: left;
-  animation: fill var(--d) linear both;
-}
-.hero-dots .is-paused i::before { animation-play-state: paused; }
-@keyframes fill { from { transform: scaleX(0); } }
+.hero-dots button.is-active i { background: var(--lime); } /* hover 규칙보다 뒤에 둬야 현재 점이 계속 라임색 */
 
 /* ---------- shortcuts ---------- */
 .shortcuts-viewport { display: block; margin-bottom: clamp(28px, 4vw, 48px); }
