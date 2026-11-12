@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { api, img, runtime, year } from '../api'
-import { Card } from './Row'
+import { Card, Stars } from './Row'
 
 export default function Detail({ target, onClose, onOpen }) {
   const dialog = useRef(null)
@@ -69,7 +69,7 @@ export default function Detail({ target, onClose, onOpen }) {
                 <h2 className="detail-title">{data.title}</h2>
                 {data.original !== data.title && <p className="detail-original">{data.original}</p>}
                 <ul className="facts">
-                  {data.rating > 0 && <li className="facts-score">{data.rating.toFixed(1)}</li>}
+                  {data.rating > 0 && <li className="facts-score"><small className="score-label">평점:</small>{data.rating.toFixed(1)}<Stars rating={data.rating} /></li>}
                   {facts.map((f) => <li key={f}>{f}</li>)}
                 </ul>
                 {data.trailer && (

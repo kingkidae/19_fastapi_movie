@@ -1,13 +1,19 @@
 import { useEffect, useRef, useState } from 'react'
 import { img, year } from '../api'
 
+// 10점 만점 → 별 5개, 0.5 단위 반올림 (7.2 → 3.5개). 숫자가 옆에 있어 화면낭독기에는 숨긴다
+export function Stars({ rating }) {
+  const r = Math.round(rating) // 8 이상 = 별 4개 이상 → 네온
+  return <span className={`stars${r >= 8 ? ' is-neon' : ''}`} style={{ '--p': `${r * 10}%` }} aria-hidden="true">★★★★★</span>
+}
+
 export function Card({ item, onOpen, rank }) {
   return (
     <button className={`card${rank ? ' card-ranked' : ''}`} onClick={() => onOpen(item)}>
       {rank && <span className="rank" aria-hidden="true">{rank}</span>}
       <span className="poster">
         <img src={img(item.poster, 'w342')} alt="" loading="lazy" decoding="async" />
-        {item.rating > 0 && <span className="score">{item.rating.toFixed(1)}</span>}
+        {item.rating > 0 && <span className="score"><Stars rating={item.rating} /><span><small className="score-label">평점:</small>{item.rating.toFixed(1)}</span></span>}
       </span>
       <span className="card-title">{rank && <span className="sr-only">{rank}위 </span>}{item.title}</span>
       {!rank && <span className="card-sub">{year(item.date)}{item.type === 'tv' && ' 시리즈'}</span>}
