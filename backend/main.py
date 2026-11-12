@@ -6,6 +6,10 @@ import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException, Query
 
+# backend 폴더 안에서 `uvicorn main:app`으로 띄우면 __package__가 "backend"가 아니다
+if __package__ != "backend":
+    raise SystemExit("프로젝트 루트에서 실행하세요: npm run dev")
+
 load_dotenv(Path(__file__).resolve().parent.parent / ".env")
 
 API_KEY = os.getenv("TMDB_API_KEY", "").strip()

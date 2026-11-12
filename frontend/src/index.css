@@ -253,6 +253,62 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: roun
 .hero-dots .is-paused i::before { animation-play-state: paused; }
 @keyframes fill { from { transform: scaleX(0); } }
 
+/* ---------- shortcuts ---------- */
+.shortcuts-viewport { display: block; margin-bottom: clamp(28px, 4vw, 48px); }
+.shortcuts-viewport .row-nav { top: 12px; bottom: auto; height: clamp(72px, 8vw, 112px); } /* 화살표를 원 높이에 맞춘다 */
+.shortcuts {
+  display: flex;
+  gap: clamp(14px, 2.4vw, 40px);
+  padding: 12px var(--gutter) 8px; /* 위 여백: 호버로 올라갈 때 잘리지 않게 */
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--gutter);
+  scrollbar-width: none;
+  overscroll-behavior-x: contain;
+}
+.shortcuts::-webkit-scrollbar { display: none; }
+.shortcut {
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  width: clamp(72px, 8vw, 112px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  transition: transform 0.35s var(--ease-out);
+}
+.shortcut:hover, .shortcut:focus-visible { transform: translateY(-6px); }
+.shortcut:focus-visible { outline: 0; }
+.shortcut-icon {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--graphite);
+  box-shadow: 0 8px 22px rgb(0 0 0 / 0.5);
+}
+.shortcut-icon img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.shortcut-icon b { font-family: var(--display); font-weight: 800; font-size: clamp(1rem, 1.6vw, 1.5rem); letter-spacing: 0.01em; color: var(--black); }
+.shortcut-icon i {
+  position: absolute;
+  top: 2%;
+  right: 2%;
+  width: 26%;
+  aspect-ratio: 1;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: #ff1f3d;
+  color: var(--white);
+  font-style: normal;
+  font-size: clamp(0.62rem, 0.9vw, 0.8rem);
+  font-weight: 800;
+}
+.shortcut:focus-visible .shortcut-icon { box-shadow: 0 0 0 2px var(--lime); }
+.shortcut-label { font-size: clamp(0.78rem, 1vw, 0.92rem); font-weight: 600; line-height: 1.35; text-align: center; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; }
+
 /* ---------- rows ---------- */
 .rows { position: relative; z-index: 1; margin-top: clamp(-80px, -7vh, -40px); padding-bottom: 40px; }
 .row { margin-bottom: clamp(36px, 5vw, 56px); scroll-margin-top: 90px; }

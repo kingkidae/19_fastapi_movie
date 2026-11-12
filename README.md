@@ -14,16 +14,20 @@ TMDB_ACCESS_TOKEN=...     # API 읽기 액세스 토큰 (v4)
 ## 실행
 
 ```bash
-# 백엔드 (http://127.0.0.1:8000)
-cd backend
-python -m venv .venv
-.venv\Scripts\pip install -r requirements.txt
-.venv\Scripts\python -m uvicorn main:app --reload
+# 모든 명령은 프로젝트 루트에서 실행한다 (backend 폴더 안에서는 실행되지 않음)
 
-# 프론트 (http://localhost:5173, /api 요청은 백엔드로 프록시)
-cd frontend
+# 처음 한 번 설치
+python -m venv backend\.venv
+backend\.venv\Scripts\pip install -r backend\requirements.txt
 npm install
+npm --prefix frontend install
+
+# 백엔드(http://127.0.0.1:8000) + 프론트(http://localhost:5173) 동시 실행
 npm run dev
+
+# 따로 실행하려면
+npm run backend
+npm run frontend
 ```
 
 ## API

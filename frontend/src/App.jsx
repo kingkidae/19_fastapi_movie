@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { api } from './api'
 import Header from './components/Header'
 import Hero from './components/Hero'
+import Shortcuts from './components/Shortcuts'
 import Row, { Card } from './components/Row'
 import Detail from './components/Detail'
 
@@ -67,6 +68,7 @@ export default function App() {
           <>
             <Hero items={home.rows.trending.filter((x) => x.backdrop).slice(0, 6)} genres={home.genres} onOpen={openItem} />
             <div className="rows">
+              <Shortcuts rows={home.rows} onOpen={openItem} />
               {ROWS.map(([key, title, ranked]) => (
                 <Row key={key} id={key} title={title} items={ranked ? home.rows[key].slice(0, 10) : home.rows[key]} ranked={ranked} onOpen={openItem} />
               ))}
