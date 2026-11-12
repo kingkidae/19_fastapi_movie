@@ -398,18 +398,7 @@ svg { fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: roun
   color: transparent;
 }
 /* drop-shadow는 글자의 불투명도를 따라 번져서, 칠해진 별만 강하게 빛나고 빈 별은 거의 안 빛난다 */
-/* 빛 번짐은 고정, 반짝임은 opacity만: 수십 개가 돌아도 다시 그리지 않고 GPU 합성만 한다 */
-.stars.is-neon {
-  filter: drop-shadow(0 0 1px var(--lime)) drop-shadow(0 0 6px rgb(215 255 0 / 0.8));
-  will-change: opacity;
-  animation: neon 2.6s ease-in-out infinite;
-}
-@keyframes neon {
-  0%, 100% { opacity: 1; }
-  45% { opacity: 0.7; }
-  70%, 74% { opacity: 1; }
-  72% { opacity: 0.35; } /* 네온관이 순간 깜빡이는 느낌 */
-}
+.stars.is-neon { filter: drop-shadow(0 0 1px var(--lime)) drop-shadow(0 0 6px rgb(215 255 0 / 0.8)); }
 
 .card-title { margin-top: 6px; font-size: 0.92rem; font-weight: 600; line-height: 1.35; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .card-sub { font-size: 0.8rem; color: var(--ash); }
