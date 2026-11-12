@@ -4,7 +4,8 @@
   "scripts": {
     "dev": "concurrently -n api,web -c blue,green \"npm run backend\" \"npm run frontend\"",
     "backend": "backend\\.venv\\Scripts\\python -m uvicorn backend.main:app --reload",
-    "frontend": "npm --prefix frontend run dev"
+    "frontend": "npm --prefix frontend run dev",
+    "deploy": "ssh -i ~/.ssh/motiviete-key.pem ubuntu@15.165.113.4 ~/19_fastapi_movie/deploy.sh"
   },
   "devDependencies": {
     "concurrently": "^10.0.7"

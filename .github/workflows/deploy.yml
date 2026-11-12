@@ -1,0 +1,25 @@
+name: deploy
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch: # Actions 탭에서 수동 실행도 가능
+
+concurrency: deploy # 배포가 겹치지 않게 한 번에 하나씩
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: EC2에서 deploy.sh 실행
+        env:
+          HOST: ${{ secrets.EC2_HOST }}
+          KEY: ${{ secrets.EC2_SSH_KEY }}
+        run: |
+          if [ -z "$HOST" ] || [ -z "$KEY" ]; then
+            echo "::warning::EC2_HOST / EC2_SSH_KEY Secrets가 없어 배포를 건너뜁니다."
+            exit 0
+          fi
+          install -m 600 /dev/null key
+          printf '%s\n' "$KEY" > key
+          ssh -i key -o StrictHostKeyChecking=accept-new "ubuntu@$HOST" '~/19_fastapi_movie/deploy.sh'
