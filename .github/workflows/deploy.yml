@@ -15,6 +15,8 @@ jobs:
         env:
           HOST: ${{ secrets.EC2_HOST }}
           KEY: ${{ secrets.EC2_SSH_KEY }}
+          # 서버 호스트 공개 키(비밀 아님): 가짜 서버로 접속하는 것을 막는다. 서버를 새로 만들면 바꿔야 함
+          HOST_KEY: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKzU+cpQ2+Tcm/k9Xr8lbsdEPlvsoTXzYa3Y9Y1AAaBR
         run: |
           if [ -z "$HOST" ] || [ -z "$KEY" ]; then
             echo "::warning::EC2_HOST / EC2_SSH_KEY Secrets가 없어 배포를 건너뜁니다."
@@ -22,4 +24,5 @@ jobs:
           fi
           install -m 600 /dev/null key
           printf '%s\n' "$KEY" > key
-          ssh -i key -o StrictHostKeyChecking=accept-new "ubuntu@$HOST" '~/19_fastapi_movie/deploy.sh'
+          echo "$HOST $HOST_KEY" > known_hosts
+          ssh -i key -o StrictHostKeyChecking=yes -o UserKnownHostsFile=known_hosts "ubuntu@$HOST" '~/19_fastapi_movie/deploy.sh'
