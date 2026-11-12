@@ -5,7 +5,14 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#000000" />
-    <title>MOtiVIEte</title>
+    <title>MOtiVIEte — 인기 영화·시리즈 둘러보기</title>
+    <meta name="description" content="MOtiVIEte는 TMDB 데이터로 지금 인기 있는 영화와 시리즈를 둘러보는 웹 앱입니다. 오늘의 TOP 10, 극장 상영작, 개봉 예정작, 한국 영화, 인기 시리즈와 예고편·출연진을 볼 수 있습니다." />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MOtiVIEte" />
+    <meta property="og:title" content="MOtiVIEte — 인기 영화·시리즈 둘러보기" />
+    <meta property="og:description" content="오늘의 TOP 10, 극장 상영작, 개봉 예정작, 한국 영화, 인기 시리즈를 한눈에. 예고편과 출연진까지." />
+    <meta property="og:locale" content="ko_KR" />
+    <meta name="twitter:card" content="summary" />
     <link rel="preconnect" href="https://image.tmdb.org" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -20,6 +27,19 @@
   </head>
   <body>
     <div id="root"></div>
+    <!-- JS를 실행하지 않는 크롤러(대부분의 AI 크롤러)가 읽는 유일한 본문 -->
+    <noscript>
+      <h1>MOtiVIEte — 인기 영화·시리즈 둘러보기</h1>
+      <p>MOtiVIEte는 TMDB(The Movie Database) 데이터로 지금 인기 있는 영화와 시리즈를 둘러보는 웹 앱입니다.</p>
+      <ul>
+        <li>오늘의 영화 TOP 10과 이번 주 많이 본 콘텐츠</li>
+        <li>지금 극장에서 상영 중인 영화와 곧 개봉하는 영화</li>
+        <li>한국 영화 인기작, 인기 시리즈, 평점이 높은 영화</li>
+        <li>작품별 줄거리, 예고편, 출연진, 비슷한 작품</li>
+        <li>영화·시리즈 제목 검색</li>
+      </ul>
+      <p>이 사이트를 보려면 자바스크립트를 켜 주세요.</p>
+    </noscript>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
